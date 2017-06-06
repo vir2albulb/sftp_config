@@ -1,4 +1,7 @@
 # sftp_config
+Requirements: bash shell
+Script has been wrote and verified on Centos7.
+
 Bash script that allows to configure SFTP account for particular user
 
 Simply script to configure SFTP server (if never been configured) and SFTP account.
