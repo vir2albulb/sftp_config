@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 user=$1
 path=$2
-sshd_config="/root/Documents/sshd_config";
+sshd_config="/etc/ssh/sshd_config";
 
 if [[ -n $user ]] && [[ -n $path ]]; then
 	if [[ -d $path ]]; then
@@ -12,6 +12,7 @@ if [[ -n $user ]] && [[ -n $path ]]; then
 		else
 			echo "Creating user ${user}...";
 			useradd -d "${path}" -s /sbin/nologin $user >/dev/null 2>&1;
+			echo "Done. Please set password to newly created account using: passwd ${user}";
 		fi
 		setfacl -m u:$user:rwX "${path}";
 		setfacl -m d:u:$user:rwX "${path}";
@@ -21,6 +22,7 @@ if [[ -n $user ]] && [[ -n $path ]]; then
 		sed -i 's/Subsystem\tsftp\t\/usr\/libexec\/openssh\/sftp-server/#&\nSubsystem\tsftp\tinternal-sftp/' "${sshd_config}";
 		echo -e "Match user ${user}\n\tPasswordAuthentication yes\n\tForceCommand internal-sftp" >> "${sshd_config}";
 		systemctl restart sshd > /dev/null 2>&1 || service sshd restart > /dev/null 2>&1;
+		echo "SFTP account ${user} ready to use";
 	else
 		echo "Invalid path parameter";
 	fi
