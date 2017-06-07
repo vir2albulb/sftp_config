@@ -7,9 +7,13 @@ Bash script that allows to configure SFTP account for particular user
 
 Simply script to configure SFTP server (if never been configured) and SFTP account.
 
-sft_config.sh requires only 2 parameters:
+sftp_config.sh requires only 2 parameters:
 1. username
 2. path to SFTP root directory.
+
+```
+./sftp_config.sh testuser /myNewSftp
+```
 
 If both parameters are correct in first step script create account (if not exists), set default shell to /sbin/nologin and home directory to SFTP root directory.
 In next step correct ACLs are set to root SFTP directory for newly created SFTP account.
