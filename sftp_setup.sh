@@ -16,7 +16,6 @@ if [[ -n $user ]] && [[ -n $path ]]; then
 		fi
 		setfacl -R -m u:$user:rwX "${path}";
 		setfacl -R -m d:u:$user:rwX "${path}";
-		
 		cp "${sshd_config}" "${sshd_config}_$(date +%s)";
 		grep -P "Subsystem\tsftp\tinternal-sftp" "${sshd_config}" > /dev/null 2>&1 || \
 		sed -i 's/Subsystem\tsftp\t\/usr\/libexec\/openssh\/sftp-server/#&\nSubsystem\tsftp\tinternal-sftp/' "${sshd_config}";
