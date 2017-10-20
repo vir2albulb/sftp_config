@@ -22,8 +22,12 @@ Example for SFTP group:
 ./sftp_config.sh group sftp_group /sftp_share
 ```
 
-If both parameters are correct in first step script creates account or group (if not exists), for user sets default shell to /sbin/nologin and home directory to SFTP root directory.
-In next step correct ACLs are set to root SFTP directory for newly created SFTP account/group.
-Last step is basic for sshd_config file - apply access using SFTP and add new SFTP account to be allowed only to connect using SFTP protocol.
+If both parameters are correct in first step script creates account or group (if not
+exists), for user sets default shell to /sbin/nologin and home directory to SFTP root
+directory.
+In next step correct ACLs are set to root SFTP directory for newly created SFTP 
+account/group.
+Last step is basic for sshd_config file - apply access using SFTP and add new 
+SFTP account to be allowed only to connect using SFTP protocol.
 
 Script sets permissions to login to SFTP IDs using passwords.
