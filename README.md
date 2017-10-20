@@ -22,7 +22,7 @@ Example for SFTP group:
 ./sftp_config.sh group sftp_group /sftp_share
 ```
 
-If both parameters are correct in first step script creates account or group (if not
+If both parameters are correct in first step script creates account or group (if not \
 exists), for user sets default shell to /sbin/nologin and home directory to SFTP root
 directory.
 In next step correct ACLs are set to root SFTP directory for newly created SFTP 
